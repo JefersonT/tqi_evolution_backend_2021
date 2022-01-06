@@ -8,18 +8,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/cad_user")
 public class UserController {
     @Autowired
     private UserService service;
 
-    @PostMapping
-    public void postUser(@RequestBody User user){
-        service.createUser(user);
+    @PostMapping("/cad_user")
+    public User postUser(@RequestBody User user){
+        return service.createUser(user);
     }
 
-    @GetMapping("/user_id")
-    public Optional<User> findByIdUser(Integer id){
+    @GetMapping("/user_id/{id}")
+    public Optional<User> findByIdUser(@PathVariable Integer id){
         return service.findByIdUser(id);
     }
 

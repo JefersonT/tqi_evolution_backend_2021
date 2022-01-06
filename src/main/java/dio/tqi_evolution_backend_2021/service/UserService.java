@@ -16,11 +16,11 @@ public class UserService {
 //    @Autowired(required = true)
 //    private PasswordEncoder encoder;
 
-    public void createUser (User user){
+    public User createUser (User user){
 //        String pass = user.getSenha();
 //        //Criptografando antes de salvar no banco
 //        user.setSenha(encoder.encode(pass));
-        repository.save(user);
+        return repository.save(user);
     }
 
     public Optional<User> findByIdUser(Integer id){

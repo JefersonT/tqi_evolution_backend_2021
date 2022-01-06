@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/solicitar")
+@RequestMapping
 public class SolicitacaoController {
 
     @Autowired
     private SolicitacaoService service;
 
-    @PostMapping
+    @PostMapping("/solicitar")
     public void postSolicitacao(@RequestBody Solicitacao solicitacao){
         service.createSolicitacao(solicitacao);
     }

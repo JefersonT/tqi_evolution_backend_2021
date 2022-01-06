@@ -1,6 +1,7 @@
 package dio.tqi_evolution_backend_2021.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "tab_solicitacao")
@@ -14,13 +15,13 @@ public class Solicitacao {
     private Float valor;
 
     @Column(length = 50, nullable = false)
-    private String data_solicitacao;
+    private Date data_solicitacao;
 
     @Column(length = 50, nullable = false)
-    private String data_pri_parcela;
+    private Date data_pri_parcela;
 
     @Column(length = 2, nullable = false)
-    private Integer qtd_parcelas;
+    private Integer qtd_parcelas;//limitar a 60 parcelas
 
 
     @ManyToOne
@@ -47,19 +48,19 @@ public class Solicitacao {
         this.valor = valor;
     }
 
-    public String getData_solicitacao() {
+    public Date getData_solicitacao() {
         return data_solicitacao;
     }
 
-    public void setData_solicitacao(String data_solicitacao) {
+    public void setData_solicitacao(Date data_solicitacao) {
         this.data_solicitacao = data_solicitacao;
     }
 
-    public String getData_pri_parcela() {
+    public Date getData_pri_parcela() {
         return data_pri_parcela;
     }
 
-    public void setData_pri_parcela(String data_pri_parcela) {
+    public void setData_pri_parcela(Date data_pri_parcela) {
         this.data_pri_parcela = data_pri_parcela;
     }
 
