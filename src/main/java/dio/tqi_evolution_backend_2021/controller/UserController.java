@@ -13,19 +13,28 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    @PostMapping("/cad_user")
+    //Cadastro de usuário
+    @PostMapping("/user_criar")
     public User postUser(@RequestBody User user){
         return service.createUser(user);
     }
 
-    @GetMapping("/user_id/{id}")
+    //Listar usuário com id
+    @GetMapping("/user_list_id/{id}")
     public Optional<User> getByIdUser(@PathVariable Integer id){
         return service.findByIdUser(id);
     }
 
-    @GetMapping("/users")
-    public List<User> postUsers(){
+    //listar todos usuários
+    @GetMapping("/user_list")
+    public List<User> getUsers(){
         return service.findAll();
+    }
+
+    //listar usuários pelo email
+    @GetMapping("/user_list_email/{email}")
+    public User postUsers(@PathVariable String email){
+        return service.findByLogin(email);
     }
 
 }

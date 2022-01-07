@@ -27,6 +27,10 @@ public class UserService {
         return repository.findById(id);
     }
 
+    public User findByLogin(String email){
+        return repository.findByLogin(email);
+    }
+
     public List<User> findAll(){
         return repository.findAll();
     }
