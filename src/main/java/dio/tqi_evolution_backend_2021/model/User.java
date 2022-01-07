@@ -39,11 +39,11 @@ public class User {
     @Column(length = 10, nullable = false)
     private Float renda;
 
-//    //Preparando o código para criação de autenticação por token
-//    @ElementCollection(fetch = FetchType.EAGER)
-//    @CollectionTable(name = "tab_user_roles", joinColumns = @JoinColumn(name = "user_id"))
-//    @Column(name = "role_id")
-//    private List<String> roles = new ArrayList<>();
+    //Preparando o código para criação de autenticação por token
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "tab_user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role_id")
+    private List<String> roles = new ArrayList<>();
 
 
     public Integer getId() {
@@ -110,11 +110,11 @@ public class User {
         this.renda = renda;
     }
 
-//    public List<String> getRoles() {
-//        return roles;
-//    }
-//
-//    public void setRoles(List<String> roles) {
-//        this.roles = roles;
-//    }
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
 }

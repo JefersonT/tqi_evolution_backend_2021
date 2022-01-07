@@ -5,6 +5,7 @@ import dio.tqi_evolution_backend_2021.model.User;
 import dio.tqi_evolution_backend_2021.repository.SolicitacaoRepository;
 import dio.tqi_evolution_backend_2021.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jmx.MBeanServerNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -26,11 +27,31 @@ public class SolicitacaoService {
         TimeUnit time = TimeUnit.DAYS;
         long difference = time.convert(diff, TimeUnit.MILLISECONDS);
         if ( difference > 90 || solicitacao.getQtd_parcelas() > 60){
-            solicitacao.setData_pri_parcela(null);
-            return repository.save(solicitacao);
+            try{
+                solicitacao.setData_pri_parcela(null);
+                return repository.save(solicitacao);
+            }catch (Exception e){
+                throw new MBeanServerNotFoundException("erro");
+            }
+
         }
         return repository.save(solicitacao);
     }
+
+//    public Solicitacao createSolicitacao (Solicitacao solicitacao){
+//        solicitacao.setData_solicitacao(new Date());
+//        long diff = solicitacao.getData_pri_parcela().getTime() - solicitacao.getData_solicitacao().getTime();
+//        TimeUnit time = TimeUnit.DAYS;
+//        long difference = time.convert(diff, TimeUnit.MILLISECONDS);
+//        if ( difference > 90 || solicitacao.getQtd_parcelas() > 60){
+//            try{
+//
+//            }catch (Bean)
+//            solicitacao.setData_pri_parcela(null);
+//            return repository.save(solicitacao);
+//        }
+//        return repository.save(solicitacao);
+//    }
 
     public List<Solicitacao> findAll(){
         return repository.findAll();
