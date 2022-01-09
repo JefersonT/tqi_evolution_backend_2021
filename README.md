@@ -33,3 +33,11 @@ O prazo máximo para finalizar esta implementação é 10/01/2022. Portanto, exp
 Quando finalizar, você deve criar uma tag no GitHub chamada tqi_evolution_avaliacao. Desta forma, nosso time já irá avaliar o material final.
 
 Bora pra este desafio?
+
+# Explicação das rotas
+### /user_criar_admin
+ - Rota utilizada para criação de 
+### /user_criar_cliente
+### /user_list_id/{id}
+### /user_list
+### /user_list_email/{email}

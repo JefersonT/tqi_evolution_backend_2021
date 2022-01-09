@@ -5,6 +5,7 @@ import dio.tqi_evolution_backend_2021.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,8 +15,19 @@ public class UserController {
     private UserService service;
 
     //Cadastro de usuário
-    @PostMapping("/user_criar")
-    public User postUser(@RequestBody User user){
+    @PostMapping("/user_criar_admin")
+    public User postUserAdmin(@RequestBody User user){
+        List<String> roles = new ArrayList<>();
+        roles.add("MANAGERS");
+        user.setRoles(roles);
+        return service.createUser(user);
+    }
+
+    @PostMapping("/user_criar_cliente")
+    public User postUserCliente(@RequestBody User user){
+        List<String> roles = new ArrayList<>();
+        roles.add("USERS");
+        user.setRoles(roles);
         return service.createUser(user);
     }
 

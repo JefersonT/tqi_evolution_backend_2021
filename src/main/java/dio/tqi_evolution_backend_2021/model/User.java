@@ -18,7 +18,7 @@ public class User {
     @Column(length = 50, nullable = false)
     private String email;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 500, nullable = false)
     private String senha;
 
     //Melhoria: limitar a entrada para receber o CPF e RG com o formato correto

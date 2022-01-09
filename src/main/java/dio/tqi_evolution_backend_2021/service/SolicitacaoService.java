@@ -26,14 +26,15 @@ public class SolicitacaoService {
         long diff = solicitacao.getData_pri_parcela().getTime() - solicitacao.getData_solicitacao().getTime();
         TimeUnit time = TimeUnit.DAYS;
         long difference = time.convert(diff, TimeUnit.MILLISECONDS);
-        if ( difference > 90 || solicitacao.getQtd_parcelas() > 60){
-            try{
-                solicitacao.setData_pri_parcela(null);
-                return repository.save(solicitacao);
-            }catch (Exception e){
-                throw new MBeanServerNotFoundException("erro");
-            }
-
+        if ( difference > 90 ){
+            throw new RuntimeException("Quantidade de dias da primeira parcela exedente, máximo de 3 meses");
+            //solicitacao.setData_pri_parcela(null);
+            //return repository.save(solicitacao);
+        }
+        if ( solicitacao.getQtd_parcelas() > 60){
+            throw new RuntimeException("Quantidade de parcelas exedentes, máximo de 60 parcelas");
+            //solicitacao.setData_pri_parcela(null);
+            //return repository.save(solicitacao);
         }
         return repository.save(solicitacao);
     }

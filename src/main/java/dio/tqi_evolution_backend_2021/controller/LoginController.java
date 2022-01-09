@@ -33,6 +33,7 @@ public class LoginController {
             //Estamos enviando um objeto Sessão para retornar mais informações do usuário
             Sessao sessao = new Sessao();
             sessao.setEmail(user.getEmail());
+            sessao.setId_user(user.getId());
 
             JWTObject jwtObject = new JWTObject();
             jwtObject.setIssuedAt(new Date(System.currentTimeMillis()));
