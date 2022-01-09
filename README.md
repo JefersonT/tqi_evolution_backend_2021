@@ -36,8 +36,44 @@ Bora pra este desafio?
 
 # Explicação das rotas
 ### /user_criar_admin
- - Rota utilizada para criação de 
+ - Rota utilizada para criação de usuários admin
+   - Entrada JSON {name, email, cpf, rg, senha, endereco, renda}
 ### /user_criar_cliente
+- Rota utilizada para criação de usuários clientes
+  - Entrada JSON {name, email, cpf, rg, senha, endereco, renda}
 ### /user_list_id/{id}
+- Rota utilizada para listar usuário pelo id
+    - Entrada via URL id do usuário
 ### /user_list
+- Rota utilizada para listar todos usuário da base, limitado para admin
+
 ### /user_list_email/{email}
+- Rota utilizada para listar usuário pelo email
+    - Entrada via URL email do usuário
+### /login
+- Rota utilizada para realização de login e geração de token de authencation
+  - Entrada via bory JSON de email e senha
+### /solicitacao_criar
+- Rota utilizada para criação de solicitação
+  - Entrada via JSON de valor, data da primeira parcela, quantidade de parcelas e dados do usuário.
+### /solicitacao_listar
+- Rota para listar todas as solicitações, limitada para admin
+### /solicitacao_listar_id/{id}
+- Rota para listar solicitaão pelo id da solicitação limitado para admin
+  - Entrada via URL do id da solicitação
+### /solicitacao_listar_id_user/{id}
+- Rota para lista solicitações pelo id do usuário
+  - Entrada via URL do id do usuário
+### /solicitacao_listar_id_and_id_user/{id}&{id_user}
+- Rota para lista solicitações pelo id da solicitação e pelo id do usuário
+  - Entrada via URL do id da solicitação e id do usuário
+### /solicitacao_listar_id_and_email/{id}&{email}
+- Rota para lista solicitações pelo id da solicitação e pelo email do usuário
+    - Entrada via URL do id da solicitação e email do usuário
+### /solicitacao_email_user/{email}
+- Rota para lista solicitações pelo email do usuário
+    - Entrada via URL do email do usuário
+
+## Melhorias a serem implementadas
+1. Tornar o Endereço um model separado ao para subistituir o endereço atual ue utiliza apenas uma string.
+2. Adicionar funcionalidade de edição de dados.
